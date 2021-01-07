@@ -4,10 +4,9 @@ import java.util.*;
 import java.awt.*;
 import javax.swing.*;
 
-import gatesProject.txtInput;
-
 public class board extends JPanel {
-    public static JFrame f = new JFrame("screen");
+	private static final long serialVersionUID = 1L;
+	public static JFrame f = new JFrame("screen");
     public static JPanel jp = new JPanel();
     public static ArrayList<pwrNode> pwrNodes = new ArrayList<>();
     public static ArrayList<pwrNode> outNodes = new ArrayList<>();
@@ -66,16 +65,14 @@ public class board extends JPanel {
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setExtendedState(f.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         board b = new board();
-        boardMouse bm = new boardMouse();
+        //boardMouse bm = new boardMouse();
         f.add(b);
         f.setSize(1920, 1080);
         f.setVisible(true);
-        //f.add(jp);
-        
         
         cp.randomizeColor();
-        txt.setX((int)(f.bounds().width * 0.05));
-        txt.setY((int)(f.bounds().height * 0.2) - txt.getHeight());
+        txt.setX((int)(f.getWidth() * 0.05));
+        txt.setY((int)(f.getHeight() * 0.2) - txt.getHeight());
         createButton = new btn(0, 0, 50, 50, 25, "CREATE", new Color(214, 214, 214));
         btn andButton = new btn(0, 0, 50, 50, 25, "AND", new Color(252, 186, 3));
         btn notButton = new btn(0, 0, 50, 50, 25, "NOT", new Color(252, 3, 65));
@@ -86,10 +83,10 @@ public class board extends JPanel {
         
         //node buttons font size
         int nbfs  = 90;
-        buttons.add(new btn((int)(f.bounds().width * 0.05) - 50,(int)(f.bounds().height * 0.2), 50, 50, nbfs, "+", Color.GREEN));
-        buttons.add(new btn((int)(f.bounds().width * 0.05) - 50,(int)(f.bounds().height * 0.2) + (int)(f.bounds().height * 0.6) - 50 + 10, 50, 50, nbfs, "-", Color.RED));
-        buttons.add(new btn((int)(f.bounds().width * 0.05) - 10 + (int)(f.bounds().width * 0.9),(int)(f.bounds().height * 0.2), 50, 50, nbfs, "+", Color.GREEN));
-        buttons.add(new btn((int)(f.bounds().width * 0.05) - 10 + (int)(f.bounds().width * 0.9),(int)(f.bounds().height * 0.2) + (int)(f.bounds().height * 0.6) - 50 + 10, 50, 50, nbfs, "-", Color.RED));
+        buttons.add(new btn((int)(f.getWidth() * 0.05) - 50,(int)(f.getHeight() * 0.2), 50, 50, nbfs, "+", Color.GREEN));
+        buttons.add(new btn((int)(f.getWidth() * 0.05) - 50,(int)(f.getHeight() * 0.2) + (int)(f.getHeight() * 0.6) - 50 + 10, 50, 50, nbfs, "-", Color.RED));
+        buttons.add(new btn((int)(f.getWidth() * 0.05) - 10 + (int)(f.getHeight() * 0.9),(int)(f.getHeight() * 0.2), 50, 50, nbfs, "+", Color.GREEN));
+        buttons.add(new btn((int)(f.getWidth() * 0.05) - 10 + (int)(f.getHeight() * 0.9),(int)(f.getHeight() * 0.2) + (int)(f.getHeight() * 0.6) - 50 + 10, 50, 50, nbfs, "-", Color.RED));
     
         
         for(int i = 0; i < 4; i++) {

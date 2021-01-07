@@ -3,7 +3,6 @@ package gatesProject;
 import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.MouseListener;
     
 public class boardMouse implements MouseListener, MouseMotionListener {
@@ -75,7 +74,7 @@ public class boardMouse implements MouseListener, MouseMotionListener {
        for(chipDTO cd : chipDTOS) {
            btn chipBtn = cd.getBtn();
            if(inRect(mouseX, mouseY, chipBtn.getX(), chipBtn.getY(), chipBtn.getWidth(), chipBtn.getHeight()))
-               chips.add(cd.clicked().setX(f.bounds().width / 2).setY(f.bounds().height / 2));
+               chips.add(cd.clicked().setX(f.getWidth() / 2).setY(f.getHeight() / 2));
        }
         
        pwrNode n = boardActions.clickInNode(mouseX, mouseY);

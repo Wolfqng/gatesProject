@@ -39,7 +39,7 @@ public class drawBoard
         int[] rgb = cp.getRGB();
         //System.out.println(rgb[1 - 1] / 255.0 * (cp.getWidth() * 0.8));
         int ss = 5; //Stroke size
-        int bx = f.bounds().width - cp.getWidth() - (int)(f.bounds().width * 0.05) - (ss * 3);
+        int bx = f.getWidth() - cp.getWidth() - (int)(f.getWidth() * 0.05) - (ss * 3);
         int by = ss;
         g.setColor(Color.BLACK);
         Graphics2D g2 = (Graphics2D)g;
@@ -56,8 +56,8 @@ public class drawBoard
         g.setFont(new Font("TimesRoman", Font.BOLD, createButton.getFontSize()));
         int width = g.getFontMetrics().stringWidth(createButton.getText()) + 20;
         createButton.setWidth(width);
-        createButton.setY((int)(f.bounds().height * 0.6) + (int)(f.bounds().height * 0.2) + 60);
-        createButton.setX((int)(f.bounds().width * 0.05));
+        createButton.setY((int)(f.getHeight() * 0.6) + (int)(f.getHeight() * 0.2) + 60);
+        createButton.setX((int)(f.getWidth() * 0.05));
         g.setColor(createButton.getColor());
         g.fillRect(createButton.getX(), createButton.getY(), createButton.getWidth(), createButton.getHeight());
         g.setColor(Color.BLACK);
@@ -71,8 +71,8 @@ public class drawBoard
             g.setFont(new Font("TimesRoman", Font.BOLD, chipBtn.getFontSize())); 
             int width = g.getFontMetrics().stringWidth(chipBtn.getText()) + 20;
             chipBtn.setWidth(width);
-            chipBtn.setY((int)(f.bounds().height * 0.6) + (int)(f.bounds().height * 0.2) + 10);
-            if(i != 0) chipBtn.setX(chipDTOS.get(i - 1).getBtn().getX() + chipDTOS.get(i - 1).getBtn().getWidth()); else chipBtn.setX((int)(f.bounds().width * 0.05));
+            chipBtn.setY((int)(f.getHeight() * 0.6) + (int)(f.getHeight() * 0.2) + 10);
+            if(i != 0) chipBtn.setX(chipDTOS.get(i - 1).getBtn().getX() + chipDTOS.get(i - 1).getBtn().getWidth()); else chipBtn.setX((int)(f.getWidth() * 0.05));
             int hovOff = 0;
             if(cd.getBtn().isHovered()) hovOff = 50; else hovOff = 0;
             int r = chipBtn.getColor().getRed() + hovOff;
@@ -156,8 +156,8 @@ public class drawBoard
         for(int i = 0; i < size; i++) {
             pwrNode pn = pwrNodes.get(i);
             int diam = pn.getSize();
-            int x = (int)(f.bounds().width * 0.05) - ((diam - 10) / 2);
-            int y = (int)(f.bounds().height / 2) + ((100 * i) / 2) - ((50 * size) / 2) + (diam / 4);
+            int x = (int)(f.getWidth() * 0.05) - ((diam - 10) / 2);
+            int y = (int)(f.getHeight() / 2) + ((100 * i) / 2) - ((50 * size) / 2) + (diam / 4);
             pn.setX(x);
             pn.setY(y);
             if(pn.isPowered()) g.setColor(Color.RED); else g.setColor(Color.BLACK);
@@ -173,9 +173,9 @@ public class drawBoard
         for(int i = 0; i < size; i++) {
             pwrNode pn = outNodes.get(i);
             int diam = pn.getSize();
-            int offsetRectX = (int)(f.bounds().width * 0.05);
-            int x = (int)(f.bounds().width * 0.9) + offsetRectX - 20 - ((diam - 10) / 2);
-            int y = (int)(f.bounds().height / 2) + ((100 * i) / 2) - ((50 * size) / 2) + (diam / 4);
+            int offsetRectX = (int)(f.getWidth() * 0.05);
+            int x = (int)(f.getWidth() * 0.9) + offsetRectX - 20 - ((diam - 10) / 2);
+            int y = (int)(f.getHeight() / 2) + ((100 * i) / 2) - ((50 * size) / 2) + (diam / 4);
             pn.setX(x);
             pn.setY(y);
             if(pn.outPowered()) g.setColor(Color.RED); else g.setColor(Color.BLACK);
@@ -188,17 +188,17 @@ public class drawBoard
     }
     
     public static void drawRectangle(Graphics g, Frame f){
-        int offsetRectX = (int)(f.bounds().width * 0.05); 
-        int offsetRectY = (int)(f.bounds().height * 0.2); 
+        int offsetRectX = (int)(f.getWidth() * 0.05); 
+        int offsetRectY = (int)(f.getHeight() * 0.2); 
         g.setColor(new Color(80, 80, 80));
         //TOP
-        g.fillRect(offsetRectX, offsetRectY, (int)(f.bounds().width * 0.9) - 10, 10);
+        g.fillRect(offsetRectX, offsetRectY, (int)(f.getWidth() * 0.9) - 10, 10);
         //LEFT
-        g.fillRect(offsetRectX, offsetRectY, 10, (int)(f.bounds().height * 0.6));
+        g.fillRect(offsetRectX, offsetRectY, 10, (int)(f.getHeight() * 0.6));
         //BOTTOM
-        g.fillRect(offsetRectX, (int)(f.bounds().height * 0.6) + offsetRectY, (int)(f.bounds().width * 0.9) - 10, 10);
+        g.fillRect(offsetRectX, (int)(f.getHeight() * 0.6) + offsetRectY, (int)(f.getWidth() * 0.9) - 10, 10);
         //RIGHT
-        g.fillRect((int)(f.bounds().width * 0.9) + offsetRectX - 20, offsetRectY, 10, (int)(f.bounds().height * 0.6));
+        g.fillRect((int)(f.getWidth() * 0.9) + offsetRectX - 20, offsetRectY, 10, (int)(f.getHeight() * 0.6));
     }
 
 }

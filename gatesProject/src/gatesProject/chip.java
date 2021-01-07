@@ -19,7 +19,7 @@ public class chip
     private Color c;
     private boolean hovered;
        
-    public chip(int x, int y, int inSize, int outSize, ArrayList out, String name, Color c) {
+    public chip(int x, int y, int inSize, int outSize, ArrayList<String> out, String name, Color c) {
         this.x = x;
         this.y = y;
         this.inSize = inSize;

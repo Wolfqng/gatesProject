@@ -1,7 +1,6 @@
 package gatesProject;
 
 import java.util.ArrayList;
-import java.awt.*;
 import javax.swing.*;
 
 public class boardActions
@@ -45,11 +44,11 @@ public class boardActions
     public static void removeChipsOOB() {
         updateAllB();
         
-        int offsetRectX = (int)(f.bounds().width * 0.05); 
-        int offsetRectY = (int)(f.bounds().height * 0.2); 
+        int offsetRectX = (int)(f.getWidth() * 0.05); 
+        int offsetRectY = (int)(f.getHeight() * 0.2); 
         for(int i = chips.size() - 1; i >= 0; i--) {
             chip c = chips.get(i);
-            if(c.getX() < offsetRectX || c.getX() > (int)(f.bounds().width * 0.9) + offsetRectX - c.getWidth() - 15 || c.getY() < offsetRectY || c.getY() > (int)(f.bounds().height * 0.6) + offsetRectY - c.getHeight() + 10){
+            if(c.getX() < offsetRectX || c.getX() > (int)(f.getWidth() * 0.9) + offsetRectX - c.getWidth() - 15 || c.getY() < offsetRectY || c.getY() > (int)(f.getHeight() * 0.6) + offsetRectY - c.getHeight() + 10){
                 ArrayList<cable> ctbRemoved = new ArrayList<>();
                 for(pwrNode n : c.getInpNodes())
                         for(cable cab : n.getCables()) 
@@ -88,7 +87,8 @@ public class boardActions
     public static void updatePower() {
         updateAllB();
         
-        for(chip i : chips){
+        //Just need to loop through twice so im supressing it
+        for(@SuppressWarnings("unused") chip i : chips){
             for(cable c : cables) {
                  c.isPowered();
             }
