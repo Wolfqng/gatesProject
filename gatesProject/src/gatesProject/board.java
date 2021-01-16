@@ -26,6 +26,7 @@ public class board extends JPanel {
     
     public board() {
         f.addKeyListener(txt);
+        //f.addMouseListener(new boardMouse());
     }
     
     //Figure out why the hell you did this
@@ -65,7 +66,9 @@ public class board extends JPanel {
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setExtendedState(f.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         board b = new board();
-        //boardMouse bm = new boardMouse();
+        boardMouse bm = new boardMouse();
+        System.out.println(bm + " I honestly forget how this code works, I dont want a warning in the editor \n"
+        		+ " so im going to put one in the console.  I just fixed this project and found I had to do this.");
         f.add(b);
         f.setSize(1920, 1080);
         f.setVisible(true);
@@ -85,8 +88,8 @@ public class board extends JPanel {
         int nbfs  = 90;
         buttons.add(new btn((int)(f.getWidth() * 0.05) - 50,(int)(f.getHeight() * 0.2), 50, 50, nbfs, "+", Color.GREEN));
         buttons.add(new btn((int)(f.getWidth() * 0.05) - 50,(int)(f.getHeight() * 0.2) + (int)(f.getHeight() * 0.6) - 50 + 10, 50, 50, nbfs, "-", Color.RED));
-        buttons.add(new btn((int)(f.getWidth() * 0.05) - 10 + (int)(f.getHeight() * 0.9),(int)(f.getHeight() * 0.2), 50, 50, nbfs, "+", Color.GREEN));
-        buttons.add(new btn((int)(f.getWidth() * 0.05) - 10 + (int)(f.getHeight() * 0.9),(int)(f.getHeight() * 0.2) + (int)(f.getHeight() * 0.6) - 50 + 10, 50, 50, nbfs, "-", Color.RED));
+        buttons.add(new btn((int)(f.getWidth() * 0.05) - 10 + (int)(f.getWidth() * 0.9),(int)(f.getHeight() * 0.2), 50, 50, nbfs, "+", Color.GREEN));
+        buttons.add(new btn((int)(f.getWidth() * 0.05) - 10 + (int)(f.getWidth() * 0.9),(int)(f.getHeight() * 0.2) + (int)(f.getHeight() * 0.6) - 50 + 10, 50, 50, nbfs, "-", Color.RED));
     
         
         for(int i = 0; i < 4; i++) {
@@ -95,6 +98,17 @@ public class board extends JPanel {
         
         for(int i = 0; i < 2; i++) {
             boardActions.newOutput();
+        }
+        
+        Object monitor = new Object();
+        synchronized(monitor) {
+            while(true) {
+                f.repaint();
+                //for(Planet pl : planets) 
+                  //  pl.update(planets);
+                
+                try{Thread.sleep(1);}catch(InterruptedException ex){Thread.currentThread().interrupt();}
+            }
         }
     }
     
